@@ -19,7 +19,7 @@ python evaluate.py --hs True --re True --ds True --pn True --dataset vhf --num_s
 
 4. demo
 ```bash
-python app.py
+python -m demo.app
 ```
 
 ![Demo](demo/demo.gif)

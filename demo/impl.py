@@ -1,9 +1,8 @@
-from flask import jsonify
 from tqdm import tqdm
 
-from dialogue_dataset import Utterance
-from metrics import evaluate_segmentation
-from utils import (
+from dataset.dialogue_dataset import Utterance
+from util.metrics import evaluate_segmentation
+from util.utils import (
     parse_llm_response,
     convert_numpy_types,
     convert_segments_to_boundary,

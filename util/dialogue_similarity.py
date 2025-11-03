@@ -1,6 +1,6 @@
-from dialogue_dataset import DialogueDataset
+from dataset.dialogue_dataset import DialogueDataset
 from model.DSAgent import DSAgent
-from utils import resolve_dataset_path
+from util.utils import resolve_dataset_path
 
 import argparse
 

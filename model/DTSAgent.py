@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from tqdm import tqdm
 
-from llm_api import LLMAPI
+from util.llm_api import LLMAPI
 from prompt.dts import DTSPrompt
 
 try:

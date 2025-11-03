@@ -202,7 +202,7 @@ class DialogueDataset(Dataset):
 
 if __name__ == "__main__":
     import argparse
-    from utils import resolve_dataset_path
+    from util.utils import resolve_dataset_path
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset', type=str, default='vfh', help='vfh | dialseg_711 | doc2dial or path to json')

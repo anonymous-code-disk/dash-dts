@@ -1,19 +1,13 @@
-import json
-
+import os
 from flask import Flask, request, jsonify, render_template
-
-from dialogue_dataset import DialogueDataset
-from metrics import (
-    evaluate_segmentation
-)
+from dataset.dialogue_dataset import DialogueDataset
 from model.DSAgent import DSAgent
 from model.DTSAgent import DTSAgent
 from model.HSAgent import HSAgent
 from model.LLMReassessmentAgent import LLMReassessmentAgent
 from model.PNAgent import PNAgent
-from utils import load_config, resolve_dataset_path
-import os
-from impl import (
+from util.utils import load_config, resolve_dataset_path
+from demo.impl import (
     list_dialogues,
     get_dialogue_info,
     run_handshake,
@@ -27,13 +21,13 @@ from impl import (
 )
 
 app = Flask(__name__)
-config = load_config("config.yaml")
+config = load_config("./config.yaml")
 api_key = config["api_key"]["openrouter"]
 base_url = config["base_url"]["openrouter"]
 model = config["model"]["openrouter"][0]
 window_size = config.get("window_size", 3)
 
-_dataset_name = os.environ.get('DATASET', 'vfh')
+_dataset_name = os.environ.get('../dataset', 'vfh')
 _dataset_path = resolve_dataset_path(_dataset_name)
 dataset = DialogueDataset(_dataset_path)
 
@@ -169,7 +163,7 @@ def reassess_dialogue():
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset', type=str, default=os.environ.get('DATASET', 'vfh'),
+    parser.add_argument('--dataset', type=str, default='vhf',
                         help='vfh | dialseg_711 | doc2dial or path to json')
     parser.add_argument('--port', type=int, default=5000)
     parser.add_argument('--host', type=str, default='0.0.0.0')

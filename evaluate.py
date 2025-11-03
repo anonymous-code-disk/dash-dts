@@ -5,14 +5,14 @@ import os
 import numpy as np
 from tqdm import tqdm
 
-from dialogue_dataset import DialogueDataset
-from metrics import evaluate_segmentation
+from dataset.dialogue_dataset import DialogueDataset
+from util.metrics import evaluate_segmentation
 from model.DSAgent import DSAgent
 from model.DTSAgent import DTSAgent
 from model.HSAgent import HSAgent
 from model.LLMReassessmentAgent import create_reassessment_agent
 from model.PNAgent import PNAgent
-from utils import load_config, resolve_dataset_path
+from util.utils import load_config, resolve_dataset_path
 
 # Ensure HF_ENDPOINT environment variable is set (use mirror if not set)
 if 'HF_ENDPOINT' not in os.environ:
